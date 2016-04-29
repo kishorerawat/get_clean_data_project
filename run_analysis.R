@@ -52,6 +52,18 @@ features_mean_std <- feature_names$V2[grep("mean\\(\\)|std\\(\\)", feature_names
 
 features_selected <- c(as.character(features_mean_std), "subject", "activity" )
 
-
 ## extract data only for these selected columns
 data_selected <- subset(data_combined_final, select=features_selected)
+
+## read the activity labels and repalce in data_selected in the "activity" column
+act_labels <- read.table("activity_labels.txt", header = FALSE)
+
+## replace the activity number by its equivalent text label
+data_selected$activity <- act_labels$V2[data_selected$activity]
+
+## create a new dataset - containing average of each varible ordered by subject and activity
+data_avg <- aggregate(. ~subject + activity, data_selected, mean)
+data_avg <- data_avg[order(data_avg$subject, data_avg$activity),]
+
+##store this new subject+activity wise average data into a new file
+write.table(data_avg, file="HAR_avg_tidy.txt", row.name=FALSE)
