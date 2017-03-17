@@ -18,3 +18,9 @@ E. test/y_test.txt and train/y_train.txt -> these files contain the index number
 F. test/X_test.txt and train/X_train.txt -> these files containt the observed/calculated value for each of the 561 features
 
 G. test/Inertial Signals and train/Inertial Signals folders -> these 2 folders contain the low-level data captured data, but these values are not used for the project analysis
+
+
+-------------------------------------------
+Adding new content to test Git Commands
+Date - 17-Mar-2017
+-------------------------------------------
